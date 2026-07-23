@@ -1,16 +1,25 @@
 {
   "name": "intro-express-js-eileen-sanchez",
   "version": "1.0.0",
-  "description": "",
+  "description": "introduccion a express ficha 3407184",
+  "keywords": [],
+  "homepage": "https://github.com/EileenSanchez1/into-express-js-eileen-sanchez#readme",
+  "bugs": {
+    "url": "https://github.com/EileenSanchez1/into-express-js-eileen-sanchez/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EileenSanchez1/into-express-js-eileen-sanchez.git"
+  },
+  "license": "ISC",
+  "author": "eileen",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "express": "^5.2.1"
   }
 }
