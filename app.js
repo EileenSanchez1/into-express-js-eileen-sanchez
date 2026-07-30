@@ -51,6 +51,17 @@ app.get("/producto/:nombre" , (req,res)=>{
   });
 })
 
+app.get("/product/:categoria/:id" , (req,res)=>{
+  const { categoria, id } = req.params;
+  res.json({
+    Servidor:"Express",
+    categoria,
+    id
+  });
+});
+
+
+
 app.listen(port, () => {
   console.log(`Servidor en funcionamiento en el puerto: ${port}`);
 });
