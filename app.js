@@ -30,7 +30,7 @@ app.get("/productos/:nombre" , (req,res)=>{
 
 app.get("/saludo/:nombre", (req, res) => {
     const { nombre } = req.params;
-    // Si tiene menos de 3 letras, retorna el error 400
+    // Si tiene menos de 3 letras, mostrar el error 400
     if (nombre.length < 3) {
         return res.status(400).json({
             error: "El nombre debe tener al menos 3 letras"
@@ -38,6 +38,18 @@ app.get("/saludo/:nombre", (req, res) => {
     }
     res.send(`Hola ${nombre}, bienvenido`);
 });
+
+
+app.get("/producto/:nombre" , (req,res)=>{
+  const { nombre } = req.params;
+  res.json({
+    id:1,
+    Nombre:nombre,
+    Stock:25,
+    Precio:15000,
+    Categoria:"Tecnologia"
+  });
+})
 
 app.listen(port, () => {
   console.log(`Servidor en funcionamiento en el puerto: ${port}`);
