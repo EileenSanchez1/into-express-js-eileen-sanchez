@@ -2,9 +2,11 @@ import express from 'express'; // <--- Método ES (ESM)
 import {configDotenv} from "dotenv"
 configDotenv()
 import bodyParser from "body-parser";
+import cors from "cors"
 
 const app = express();
 const port= process.env.PORT || 3000;
+app.use(cors());
 
 //Configurar el uso  de body.parser para la aplicacion
 app.use(express.json())
