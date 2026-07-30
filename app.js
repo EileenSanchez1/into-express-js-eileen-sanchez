@@ -81,6 +81,28 @@ app.get("/usuarios/:id/posts", (req, res) => {
   });
 });
 
+app.get("/usuarios/:id/posts_:postId/comentarios", (req, res) => {
+  const { id, postId } = req.params;
+  const { orden = "asc" } = req.query;
+
+  let comentarios = [
+    "Excelente publicación",
+    "Muy útil",
+    "Gracias por compartir"
+  ];
+
+  if (orden === "desc") {
+    comentarios.reverse();
+  }
+
+  res.json({
+    usuario: id,
+    post: postId,
+    orden,
+    comentarios
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Servidor en funcionamiento en el puerto: ${port}`);
