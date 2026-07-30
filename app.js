@@ -103,6 +103,38 @@ app.get("/usuarios/:id/posts_:postId/comentarios", (req, res) => {
   });
 });
 
+const libros = [
+  {
+    isbn: "111",
+    titulo: "Cien años de soledad",
+    autor: "Gabriel García Márquez"
+  },
+  {
+    isbn: "222",
+    titulo: "El Principito",
+    autor: "Antoine de Saint-Exupéry"
+  },
+  {
+    isbn: "333",
+    titulo: "Don Quijote",
+    autor: "Miguel de Cervantes"
+  }
+];
+
+app.get("/libros/:isbn", (req, res) => {
+  const { isbn } = req.params;
+
+  const libro = libros.find(libro => libro.isbn === isbn);
+
+  if (!libro) {
+    return res.status(404).json({
+      mensaje: "Libro no encontrado"
+    });
+  }
+
+  res.json(libro);
+});
+
 
 app.listen(port, () => {
   console.log(`Servidor en funcionamiento en el puerto: ${port}`);
