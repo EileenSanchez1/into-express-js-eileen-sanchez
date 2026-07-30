@@ -23,6 +23,11 @@ app.get("/productos" , (req,res)=>{
     </ol>`)
 });
 
+app.get("/productos/:nombre" , (req,res)=>{
+  const producto = req.params.nombre
+  res.send(`El producto es ${producto}`)
+})
+
 app.listen(port, () => {
   console.log(`Servidor en funcionamiento en el puerto: ${port}`);
 });
