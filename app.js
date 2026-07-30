@@ -60,6 +60,26 @@ app.get("/product/:categoria/:id" , (req,res)=>{
   });
 });
 
+app.get("/usuarios/:id/posts", (req, res) => {
+  const { id } = req.params;
+  const { orden = "asc" } = req.query;
+
+  const publicaciones = [
+    "Primer Post",
+    "Segundo Post",
+    "Tercer Post"
+  ];
+
+  if (orden === "desc") {
+    publicaciones.reverse();
+  }
+
+  res.json({
+    usuario: id,
+    orden,
+    publicaciones
+  });
+});
 
 
 app.listen(port, () => {
