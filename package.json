@@ -11,6 +11,15 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "express": "^5.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EileenSanchez1/into-express-js-eileen-sanchez.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EileenSanchez1/into-express-js-eileen-sanchez/issues"
+  },
+  "homepage": "https://github.com/EileenSanchez1/into-express-js-eileen-sanchez#readme"
 }
