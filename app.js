@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const aprendices = [
+app.use(express.json());
+
+const ListaAprendices = [
   {
     id: 1,
     nombre: "Eileen Sanchez",
@@ -31,13 +33,13 @@ app.get("/", function(req, res) {
 });
 
 app.get("/aprendices", (req, res) => {
-  res.json(aprendices);
+  res.json(ListaAprendices);
 });
 
 app.get("/aprendices/nombre/:nombre", (req, res) => {
   const { nombre } = req.params;
 
-  const aprendizEncontrado = aprendices.find(aprendiz => 
+  const aprendizEncontrado = ListaAprendices.find(aprendiz => 
     aprendiz.nombre.toLowerCase().includes(nombre.toLowerCase())
   );
 
@@ -46,6 +48,36 @@ app.get("/aprendices/nombre/:nombre", (req, res) => {
   } else {
     res.status(404).json({ mensaje: "Aprendiz no encontrado" });
   }
+});
+
+app.post("/aprendices", (req, res) => {
+  const { nombre, edad, correo, imgPerfil } = req.body;
+
+  if (!nombre || nombre.trim().length < 3) {
+    return res.status(400).json({ mensaje: "El nombre es obligatorio y debe tener al menos 3 caracteres" });
+  }
+
+  const regexCorreo = /^\S+@\S+\.\S+$/;
+  if (!correo || !regexCorreo.test(correo.trim())) {
+    return res.status(400).json({ mensaje: "El correo es obligatorio y debe tener un formato válido" });
+  }
+
+  const nuevoId = ListaAprendices.length > 0 ? ListaAprendices[ListaAprendices.length - 1].id + 1 : 1;
+
+  const nuevoAprendiz = {
+    id: nuevoId,
+    nombre: nombre.trim(),
+    edad: parseInt(edad) || 0,
+    correo: correo.trim(),
+    imgPerfil: imgPerfil || ""
+  };
+
+  ListaAprendices.push(nuevoAprendiz);
+
+  res.status(201).json({
+    "mensaje": "aprendiz creado exitosamente",
+    "Datos": nuevoAprendiz
+  });
 });
 
 app.listen(port, function() {
